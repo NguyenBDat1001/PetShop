@@ -1,0 +1,153 @@
+﻿@model IEnumerable<PetShop.Models.AdminUser>
+
+@{
+    var index = 0;
+    ViewData["Title"] = "Quản trị viên";
+}
+
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-sm">
+                <h3 class="main-color">PetShop <span class=" text-muted"> - Quản lý tài khoản quản trị</span></h3>
+                <p class="text-subtitle text-muted">
+                    Thông tin của tất cả tài khoản quản trị viên sẽ được hiển thị và quản lý tại đây
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="app-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 px-3">
+                <div class="card card-outline">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="card-title">Danh sách tài khoản quản trị viên</div>
+                            </div>
+                            <div class="col-md-auto mx-2">
+                                <a asp-action="Create" type="button" class="btn btn-main-color"><i class="fa-solid fa-add me-1"></i>Tạo mới</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="tbl" class="table table-hover table-striped w-100">
+                                <thead>
+                                    <tr>
+                                        <th class="th-index" scope="col">#</th>
+                                        <th class="noSort">
+                                            @Html.DisplayNameFor(model => model.Avatar)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.DisplayName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Username)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Email)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Status)
+                                        </th>
+
+                                        <th class="noSort th-act">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="align-middle">
+                                            <td>
+                                                @{
+                                                    index++;
+                                                }
+                                                @index
+                                            </td>
+                                            <td>
+                                                <img src="~/data/users/@Html.DisplayFor(modelItem => item.Avatar)"
+                                                     class="card-img img-prod border round" alt="@Html.DisplayFor(modelItem => item.DisplayName)">
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DisplayName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Username)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Email)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ShowStatus)
+                                            </td>
+
+                                            <td class="text-nowrap">
+                                                <a asp-action="Edit" asp-route-id="@item.Use_ID" class="btn  d-inline-flex align-items-center mx-1 bg-success text-white"
+                                                   data-bs-toggle="tooltip" data-bs-placement="top" title="Sửa">
+                                                    <i class="fa-solid fa-pen-to-square "></i>
+                                                </a>
+
+                                                <a asp-action="Details" asp-route-id="@item.Use_ID" class="btn d-inline-flex align-items-center mx-1 bg-info text-white"
+                                                   data-bs-toggle="tooltip" data-bs-placement="top" title="Chi tiết">
+                                                    <i class="fa-solid fa-square-info "></i>
+                                                </a>
+
+                                                @{
+                                                    if (item.Status == 3)
+                                                    {
+                                                        <button class="btn d-inline-flex align-items-center mx-1 bg-secondary  text-white"
+                                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Admin">
+                                                            <i class="fa-solid fa-user-tie"></i>
+                                                        </button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <form method="post" asp-action="Lock" asp-route-id="@item.Use_ID" class="d-inline">
+                                                            @Html.AntiForgeryToken()
+
+
+
+                                                            @{
+                                                                if (item.Status == 2)
+                                                                {
+
+                                                                    <button type="submit" class="btn d-inline-flex align-items-center mx-1 bg-danger  text-white"
+                                                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Khóa">
+                                                                        <i class="fa-solid fa-lock"></i>  <!-- Biểu tượng khóa khi trạng thái là 2 -->
+                                                                    </button>
+                                                                }
+                                                                else if (item.Status == 1)
+                                                                {
+                                                                    <button type="submit" class="btn d-inline-flex align-items-center mx-1 bg-primary  text-white"
+                                                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Mở khóa">
+                                                                        <i class="fa-solid fa-lock-open"></i>  <!-- Biểu tượng mở khóa khi trạng thái là 1 -->
+                                                                    </button>
+                                                                }
+
+                                                                else if (item.Status == 0)
+                                                                {
+                                                                    <button type="submit" class="btn d-inline-flex align-items-center mx-1 bg-warning  text-white"
+                                                                            data-bs-toggle="tooltip" data-bs-placement="top" title="Kích hoạt">
+                                                                        <i class="fa-solid fa-check"></i>  <!-- Biểu tượng check khi trạng thái là 0 -->
+                                                                    </button>
+                                                                }
+                                                            }
+
+                                                        </form>
+                                                    }
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

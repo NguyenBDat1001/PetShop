@@ -1,0 +1,122 @@
+﻿@model PetShop.Models.Feature
+
+@{
+    ViewData["Title"] = "Chỉnh sửa Feature";
+}
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <h3 class="main-color">PetShop <span class=" text-muted"> - Chỉnh sửa Feature</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row g-3">
+        <div class="col-12">
+            <div class="callout callout-main-color">
+                Cập nhật thông tin Feature bằng cách chỉnh sửa thông tin tương ứng tại đây.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-md-8 col-12 mx-auto">
+                <div class="card card-outline mt-4 p-2">
+                    <div class="card-header">
+                        <div class="card-title">Biểu mẫu chỉnh sửa thông tin Feature</div>
+                    </div>
+                    <form asp-action="Edit" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Fea_ID" />
+                        <div class="card-body mt-2">
+
+                            <div class="row mb-4">
+                                <label asp-for="Title" class="col-lg-3 col-form-label"></label>
+                                <div class="col-lg-9">
+                                    <input asp-for="Title" class="form-control" />
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <label asp-for="DisplayOrder" class="col-lg-3 col-form-label"></label>
+                                <div class="col-lg-9">
+                                    <input asp-for="DisplayOrder" class="form-control" />
+                                    <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <label asp-for="Icon" class="col-lg-3 col-form-label"></label>
+                                <div class="col-lg-9">
+                                    <input asp-for="Icon" class="form-control" placeholder="Ví dụ: (fa-solid fa-star) trong Font Awesome" />
+                                    <span asp-validation-for="Icon" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <label asp-for="Subtitle" class="col-lg-3 col-form-label"></label>
+                                <div class="col-lg-9">
+                                    <textarea asp-for="Subtitle" class="form-control"> </textarea>
+                                    <span asp-validation-for="Subtitle" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center py-3">
+                            <input type="submit" value="Chỉnh sửa" class="btn btn-main-color me-5" />
+                            <a asp-action="Index" class="btn btn-secondary ">Hủy</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Header {
+    <link rel="stylesheet" href="~/admin/plugins/ckeditor5/ckeditor5.css">
+}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script type="importmap">
+        {
+            "imports": {
+                "ckeditor5": "/admin/plugins/ckeditor5/ckeditor5.js",
+                "ckeditor5/": "/admin/plugins/ckeditor5/"
+            }
+        }
+    </script>
+    <script type="module">
+        import {
+            ClassicEditor,
+            Essentials,
+            Paragraph,
+            Bold,
+            Italic,
+            Font,
+            Code,
+            Link
+        } from 'ckeditor5';
+
+       
+        ClassicEditor
+            .create(document.querySelector('#Subtitle'), {
+                plugins: [Essentials, Paragraph, Bold, Italic, Font, Code, Link],
+                toolbar: [
+                    'undo', 'redo', '|', 'bold', 'italic', '|', "code", "Link", '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor'
+                ]
+            })
+            .then(editor => {
+                window.editor = editor;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+   
+}

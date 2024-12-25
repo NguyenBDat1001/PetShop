@@ -1,0 +1,80 @@
+﻿@model PetShop.Models.Category
+
+@{
+    ViewData["Title"] = "Chi tiết danh mục";
+}
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <h3 class="main-color">PetShop <span class=" text-muted"> - Chi tiết danh mục</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row g-3">
+        <div class="row">
+            <div class="col-xl-5 col-md-8 col-12 mx-auto">
+                <div class="card card-outline mt-4 p-2">
+                    <div class="card-header">
+                        <div class="card-title">Thông tin chi tiết của danh mục</div>
+                    </div>
+                    <div class="card-body my-2">
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <strong class="me-2">
+                                    @Html.DisplayNameFor(model => model.Name):
+                                </strong>
+                                @Html.DisplayFor(model => model.Name)
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong class="me-2">
+                                     @Html.DisplayNameFor(model => model.DisplayOrder):
+                                </strong>
+                               @Html.DisplayFor(model => model.DisplayOrder)
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong class="me-2">
+                                    @Html.DisplayNameFor(model => model.CreatedDate):
+                                </strong>
+                                @Html.DisplayFor(model => model.CreatedDateVN)
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong class="me-2">
+                                     @Html.DisplayNameFor(model => model.CreatedBy):
+                                </strong>
+                                @Html.DisplayFor(model => model.CreatedBy)
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong class="me-2">
+                                     @Html.DisplayNameFor(model => model.UpdatedDate):
+                                </strong>
+                                @Html.DisplayFor(model => model.UpdatedDateVN)
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong class="me-2">
+                                    @Html.DisplayNameFor(model => model.UpdatedBy):
+                                </strong>
+                                @Html.DisplayFor(model => model.UpdatedBy)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center py-3">
+                        <a asp-action="Edit" asp-route-id="@Model?.Cat_ID" class="btn btn-success me-5">Chỉnh sửa</a>
+                        <a asp-action="Index" class="btn btn-secondary ">Hủy</a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

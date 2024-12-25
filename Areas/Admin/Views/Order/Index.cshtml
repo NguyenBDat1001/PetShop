@@ -1,0 +1,121 @@
+﻿@model IEnumerable<PetShop.Models.Order>
+
+@{
+    var index = 0;
+    ViewData["Title"] = "Đơn hàng";
+}
+
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-sm">
+                <h3 class="main-color">PetShop <span class=" text-muted"> - Quản lý đơn hàng</span></h3>
+                <p class="text-subtitle text-muted">
+                    Thông tin của tất cả đơn hàng sẽ được hiển thị và quản lý tại đây
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="app-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 px-3">
+                <div class="card card-outline">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="card-title">Danh sách đơn hàng</div>
+                            </div>
+                            <div class="col-md-auto mx-2">
+                                <a asp-action="Create" type="button" class="btn btn-main-color"><i class="fa-solid fa-add me-1"></i>Tạo mới</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="tbl" class="table table-hover table-striped w-100">
+                                <thead>
+                                    <tr>
+                                        <th class="th-index" scope="col">#</th>
+
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CustomerName)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Phone)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Address)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.TotalPrice)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.IsPaid)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Status)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.OrderDate)
+                                        </th>
+
+
+                                        <th class="noSort th-act">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @{
+                                                    index++;
+                                                }
+                                                @index
+                                            </td>
+
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CustomerName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Phone)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Address)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.TotalPrice)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ShowIsPaid)
+                                            </td>
+
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.ShowStatus)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.OrderDateVN)
+                                            </td>
+                                            <td class="text-nowrap">
+                                                <a asp-action="Edit" asp-route-id="@item.Ord_ID" class="btn  d-inline-flex align-items-center mx-1 bg-success text-white"
+                                                   data-bs-toggle="tooltip" data-bs-placement="top" title="Sửa"><i class="fa-solid fa-pen-to-square "></i></a>
+
+                                                <a asp-action="Details" asp-route-id="@item.Ord_ID" class="btn d-inline-flex align-items-center mx-1 bg-info text-white"
+                                                   data-bs-toggle="tooltip" data-bs-placement="top" title="Chi tiết"><i class="fa-solid fa-square-info "></i></a>
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

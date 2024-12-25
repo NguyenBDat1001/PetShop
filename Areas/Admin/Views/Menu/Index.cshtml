@@ -1,0 +1,123 @@
+﻿@model IEnumerable<PetShop.Models.Menu>
+
+@{
+    var index = 0;
+    ViewData["Title"] = "Menu";
+}
+
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-sm">
+                <h3 class="main-color">PetShop <span class=" text-muted"> - Quản lý Menu</span></h3>
+                <p class="text-subtitle text-muted">
+                    Thông tin của tất cả Menu sẽ được hiển thị và quản lý tại đây
+                </p>
+            </div>
+        </div> 
+    </div> 
+</div>
+<div class="app-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 px-3">
+                <div class="card card-outline">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md">
+                                <div class="card-title">Danh sách Menu</div>
+                            </div>
+                            <div class="col-md-auto mx-2">
+                                <a asp-action="Create" type="button" class="btn btn-main-color"><i class="fa-solid fa-add me-1"></i>Tạo mới</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="tbl" class="table table-hover table-striped w-100">
+                                <thead>
+                                    <tr>
+                                        <th class="th-index" scope="col">#</th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Title)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Url)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Parent_ID)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.DisplayOrder)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.CreatedDate)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.UpdatedDate)
+                                        </th>
+                                        
+                                        <th class="noSort th-act">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+       
+                                        <tr class="align-middle">
+                                            <td>
+                                                @{
+                                                    index++;
+                                                }
+                                                @index
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Title)
+                                            </td>
+                                          
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Url)
+                                            </td>
+                                            <td>
+                                                @if (item.Parent != null)
+                                                {
+                                                    @item.Parent.Title
+                                                }
+                                                else
+                                                {
+                                                    <span>Không có</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.DisplayOrder)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.CreatedDateVN)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.UpdatedDateVN)
+                                            </td>
+
+                                            <td class="text-nowrap">
+                                                <a asp-action="Edit" asp-route-id="@item.Men_ID" class="btn  d-inline-flex align-items-center mx-1 bg-success text-white"
+                                                   data-bs-toggle="tooltip" data-bs-placement="top" title="Sửa"><i class="fa-solid fa-pen-to-square "></i></a>
+
+                                                <a asp-action="Details" asp-route-id="@item.Men_ID" class="btn d-inline-flex align-items-center mx-1 bg-info text-white"
+                                                   data-bs-toggle="tooltip" data-bs-placement="top" title="Chi tiết"><i class="fa-solid fa-square-info "></i></a>
+
+                                                <a asp-action="Delete" asp-route-id="@item.Men_ID" class="btn d-inline-flex align-items-center mx-1 bg-danger text-white"
+                                                   data-bs-toggle="tooltip" data-bs-placement="top" title="Xóa"><i class="fa-solid fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,121 @@
+﻿@model PetShop.Models.Banner
+
+@{
+    ViewData["Title"] = "Tạo Banner";
+}
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <h3 class="main-color">PetShop <span class=" text-muted"> - Tạo Banner</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row g-3">
+        <div class="col-12">
+            <div class="callout callout-main-color">
+                Tạo Banner mới bằng cách điền thông tin tương ứng tại đây.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-md-8 col-12 mx-auto">
+                <div class="card card-outline mt-4 p-2">
+                    <div class="card-header">
+                        <div class="card-title">Biểu mẫu tạo Banner</div>
+                    </div>
+                    <form asp-action="Create" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="card-body mt-2">
+
+                            <div class="row mb-4">
+                                <label asp-for="Title" class="col-lg-3 col-form-label"></label>
+                                <div class="col-lg-9">
+                                    <input asp-for="Title" class="form-control" />
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <label asp-for="Url" class="col-lg-3 col-form-label"></label>
+                                <div class="col-lg-9">
+                                    <input asp-for="Url" class="form-control" />
+                                    <span asp-validation-for="Url" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6 mb-md-0 mb-4">
+                                    <div class="row">
+                                        <label asp-for="DisplayPosition" class="col-lg-12 col-xl-6 col-form-label"></label>
+                                        <div class="col-lg-12 col-xl-6">
+                                            <select asp-for="DisplayPosition" class="form-select">
+                                                <option value="0">Đầu trang</option>
+                                                <option value="1">Giữa trang</option>
+                                                <option value="2">Cuối trang</option>
+                                            </select>
+                                            <span asp-validation-for="DisplayPosition" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-md-0 mb-4">
+                                    <div class="row">
+                                        <label asp-for="DisplayOrder" class="col-lg-12 col-xl-6 col-form-label"></label>
+                                        <div class="col-lg-12 col-xl-6">
+                                            <input asp-for="DisplayOrder" class="form-control" />
+                                            <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
+
+                            <div class="row mb-4">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <label asp-for="Image" class="col-md-2 col-form-label"></label>
+                                <div class="col-md-10">
+                                    <input asp-for="Image" class="form-control" type="file" accept="image/*" />
+                                    <div class="w-1oo mt-2">
+                                        <img id="imgPreview" class="img-fluid my-1  rounded" style="width: 150px; height: auto;" alt="">
+                                    </div>
+                                    <span asp-validation-for="Image" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center py-3">
+                            <input type="submit" value="Tạo mới" class="btn btn-main-color me-5" />
+                            <a asp-action="Index" class="btn btn-secondary ">Hủy</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+   
+    <script>
+        window.onload = () => {
+            document.getElementById("Image").onchange = (e) => {
+                var preview = document.getElementById('imgPreview');
+                var file = e.target.files[0];
+                var reader = new FileReader();
+
+                reader.onloadend = function () {
+                    preview.src = reader.result;
+                }
+
+                if (file) {
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.src = '';
+                }
+            };
+        }
+    </script>
+}

@@ -1,0 +1,98 @@
+﻿@model PetShop.Models.Banner
+
+@{
+    ViewData["Title"] = "Chi tiết Banner";
+}
+
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <h3 class="main-color">PetShop <span class=" text-muted"> - Chi tiết Banner</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row g-3">
+        <div class=" col-lg-10 col-12 mx-auto">
+            <div class="card  card-outline mt-4 p-2">
+                <div class="card-content mt-3">
+                    <div class="text-center">
+                        <img class="card-img-top rounded-2 border" style="width: auto; height: 310px;"
+                             src="~/data/banners/@Html.DisplayFor(model => model.Image)"
+                             alt="" />
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class=" mb-3">
+                            <strong>Thông tin chi tiết của Banner</strong>
+                        </h3>
+                        <ul class="list-group list-group-flush">
+                           
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <strong class="col-lg-2 mb-1 ">
+                                        @Html.DisplayNameFor(model => model.Title):
+                                    </strong>
+                                    <div class="col-lg-10">
+                                        @Html.DisplayFor(model => model.Title)
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-4 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Url):</strong>
+                                        @Html.DisplayFor(model => model.Url)
+                                    </div>
+                                    <div class="col-lg-4 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.DisplayOrder):</strong>
+                                        @Html.DisplayFor(model => model.DisplayOrder)
+                                    </div>
+                                    <div class="col-lg-4 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.DisplayPosition):</strong>
+                                        @Html.DisplayFor(model => model.ShowPosition)
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.CreatedBy):</strong>
+                                        @Html.DisplayFor(model => model.CreatedBy)
+                                    </div>
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.CreatedDate):</strong>
+                                        @Html.DisplayFor(model => model.CreatedDateVN)
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.UpdatedBy):</strong>
+                                        @Html.DisplayFor(model => model.UpdatedBy)
+                                    </div>
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.UpdatedDate):</strong>
+                                        @Html.DisplayFor(model => model.UpdatedDateVN)
+                                    </div>
+                                </div>
+                            </li>
+
+                            
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center py-3">
+                        <a asp-action="Edit" asp-route-id="@Model?.Ban_ID" class="btn btn-success me-5">Chỉnh sửa</a>
+                        <a asp-action="Index" class="btn btn-secondary ">Hủy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

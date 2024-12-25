@@ -1,0 +1,100 @@
+﻿@model PetShop.Models.Feature
+
+@{
+    ViewData["Title"] = "Xóa Feature";
+}
+
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <h3 class="main-color">PetShop <span class=" text-muted"> - Xóa Feature</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row g-3">
+        <div class=" col-lg-10 col-12 mx-auto">
+            <div class="card  card-outline mt-4 p-2">
+                <div class="card-header">
+                    <div class="card-title">Bạn có chắc chắn muốn xóa Feature này không?</div>
+                </div>
+
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <strong class="col-lg-2 mb-1 ">
+                                    @Html.DisplayNameFor(model => model.Title):
+                                </strong>
+                                <div class="col-lg-10">
+                                    @Html.DisplayFor(model => model.Title)
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-lg-3 mb-1">
+                                    <strong class="me-1">@Html.DisplayNameFor(model => model.Icon):</strong>
+                                    <i class=" @Html.DisplayFor(model => model.Icon)"></i>
+                                </div>
+                                <div class="col-lg-3 mb-1">
+                                    <strong class="me-1">@Html.DisplayNameFor(model => model.DisplayOrder):</strong>
+                                    @Html.DisplayFor(model => model.DisplayOrder)
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <strong class="me-1">@Html.DisplayNameFor(model => model.CreatedBy):</strong>
+                                    @Html.DisplayFor(model => model.CreatedBy)
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <strong class="me-1">@Html.DisplayNameFor(model => model.CreatedDate):</strong>
+                                    @Html.DisplayFor(model => model.CreatedDateVN)
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-lg-6 mb-1">
+                                    <strong class="me-1">@Html.DisplayNameFor(model => model.UpdatedBy):</strong>
+                                    @Html.DisplayFor(model => model.UpdatedBy)
+                                </div>
+                                <div class="col-lg-6 mb-1">
+                                    <strong class="me-1">@Html.DisplayNameFor(model => model.UpdatedDate):</strong>
+                                    @Html.DisplayFor(model => model.UpdatedDateVN)
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="card mt-1">
+                                <div class="card-header">
+                                    <strong>@Html.DisplayNameFor(model => model.Subtitle):</strong>
+                                </div>
+                                <div class="card-body">
+                                    <p>  @Html.Raw(Model.Subtitle)</p>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="card-footer text-center py-3">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Fea_ID" />
+                        <input type="submit" value="Xóa" class="btn btn-danger me-5" />
+                        <a asp-action="Index" class="btn btn-secondary ">Hủy</a>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>

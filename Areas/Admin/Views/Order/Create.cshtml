@@ -1,0 +1,308 @@
+﻿@model PetShop.Models.Order
+
+@{
+    ViewData["Title"] = "Tạo đơn hàng";
+    var products = ViewData["products"] as List<Product> ?? [];
+}
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <h3 class="main-color">PetShop <span class=" text-muted"> - Tạo đơn hàng</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row g-3">
+        <div class="col-12">
+            <div class="callout callout-main-color">
+                Tạo đơn hàng mới bằng cách điền thông tin tương ứng tại đây.
+            </div>
+        </div>
+        <div class="row">
+            <div class=" col-12  mx-auto">
+                <div class="card card-outline mt-4 p-2">
+                    <div class="card-header">
+                        <div class="card-title">Biểu mẫu tạo đơn hàng</div>
+                    </div>
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <div class="card card-outline mb-3" style="height: 770px">
+                                        <div class="card-header">
+                                            <div class="card-title">Thông tin đơn hàng</div>
+                                        </div>
+                                        <div class="card-body text-start mt-2 overflow-auto">
+                                            <div class="row mb-4">
+                                                <label asp-for="Mem_ID" class="col-xxl-3 col-form-label text-md-start"></label>
+                                                <div class="col-xxl-9">
+                                                    <select asp-for="Mem_ID" class="form-select " asp-items="ViewBag.Mem_ID"></select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <label asp-for="CustomerName" class="col-xxl-3 col-form-label text-md-start"></label>
+                                                <div class="col-xxl-9">
+                                                    <input asp-for="CustomerName" class="form-control" />
+                                                    <span asp-validation-for="CustomerName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <label asp-for="Phone" class="col-xxl-3 col-form-label text-md-start"></label>
+                                                <div class="col-xxl-9">
+                                                    <input asp-for="Phone" class="form-control" />
+                                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <label asp-for="Address" class="col-xxl-3 col-form-label text-md-start"></label>
+                                                <div class="col-xxl-9">
+                                                    <input asp-for="Address" class="form-control" />
+                                                    <span asp-validation-for="Address" class="text-danger"></span>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <label asp-for="PaymentMethod" class="col-xxl-5 col-12"></label>
+                                                <div class="col-xxl-7">
+                                                    <div class="row">
+                                                        <div class="col-xxl-5 col-lg-6 mb-1">
+                                                            <input class="form-check-input form-check-primary" type="radio"
+                                                                   name="PaymentMethod" id="paymentMethod1" value="Tiền mặt" checked />
+                                                            <label class="form-check-label" for="paymentMethod1">
+                                                                Tiền mặt
+                                                            </label>
+                                                        </div>
+                                                        <div class="col-xxl-7 col-lg-6">
+                                                            <input class="form-check-input form-check-primary" type="radio"
+                                                                   name="PaymentMethod" id="paymentMethod2" value="Chuyển khoản" />
+                                                            <label class="form-check-label" for="paymentMethod2">
+                                                                Chuyển khoản
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <label asp-for="Discount" class="col-xxl-4 col-form-label text-md-start"></label>
+                                                <div class="col-xxl-8">
+                                                    <input asp-for="Discount" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <label asp-for="IsPaid" class="col-xxl-4 col-form-label text-md-start"></label>
+                                                <div class="col-xxl-8">
+                                                    <select asp-for="IsPaid" class="form-select">
+                                                        <option value="false">Chưa thanh toán</option>
+                                                        <option value="true">Đã thanh toán</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-4">
+                                                <label asp-for="Status" class="col-xxl-4 col-form-label text-md-start"></label>
+                                                <div class="col-xxl-8">
+                                                    <select asp-for="Status" class="form-select">
+                                                        <option value="0">chưa giao hàng</option>
+                                                        <option value="1">Đã giao hàng</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <textarea asp-for="Note" class="form-control" rows="5" placeholder="Nội dung ghi chú"></textarea>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-7">
+                                    <div class="card card-outline mb-0" style="height: 770px">
+                                        <div class="card-header">
+                                            <div class="row">
+                                                <div class="col-md-8 mb-md-0 mb-3">
+                                                    <div class="card-title">
+                                                        Chi tiết đơn hàng
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 text-md-end">
+                                                    <button type="button" class="btn btn-main-color" id="addRow">Thêm chi tiết</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body text-start mt-2 overflow-auto">
+                                            <table class="table table-responsive table-striped" id="orderDetailsTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sản phẩm</th>
+                                                        <th>Số lượng</th>
+                                                        <th>Giá tiền</th>
+                                                        <th>Giảm giá</th>
+                                                        <th>Hành động</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="orderDetailsTableBody">
+                                                    <tr id="emptyRow">
+                                                        <td colspan="4" class="text-center">Chưa có sản phẩm</td>
+                                                    </tr>
+                                                </tbody>
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center py-3">
+                            <input type="submit" value="Tạo mới" class="btn btn-main-color me-5" />
+                            <a asp-action="Index" class="btn btn-secondary ">Hủy</a>
+                        </div>
+                    </form>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        let rowIndex = 0;
+
+        document.getElementById('addRow').addEventListener('click', function () {
+            const tableBody = document.getElementById('orderDetailsTableBody');
+
+            // Xóa dòng "Chưa có sản phẩm" nếu tồn tại
+            const emptyRow = document.getElementById('emptyRow');
+            if (emptyRow) {
+                emptyRow.remove();
+            }
+
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                                                <td>
+                                                    <select class="form-select product-select" name="OrderDetails[${rowIndex}].Pro_ID">
+                                                        <option value="" selected>Chọn sản phẩm</option>
+        @foreach (var product in products)
+        {
+                                                                    <option value="@product.Pro_ID" data-price="@product.Price" data-discount="@product.Discount">@product.Name</option>
+        }
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <div class="input-group quantity mt-1" style="width: 100px;">
+                                                        <div class="input-group-btn">
+                                                            <button type="button" class="btn btn-sm btn-minus rounded-circle bg-light border">-</button>
+                                                        </div>
+                                                        <input type="text" class="form-control form-control-sm text-center border-0 quantity-input" name="OrderDetails[${rowIndex}].Quantity" value="1">
+                                                        <div class="input-group-btn">
+                                                            <button type="button" class="btn btn-sm btn-plus rounded-circle bg-light border">+</button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                           <td>
+                                                                    <input type="text" class="form-control price-input" name="OrderDetails[${rowIndex}].Price" readonly />
+                                                        </td>                                                                   
+                                                        <td>
+                            <input type="text" class="discount-price-input" name="OrderDetails[${rowIndex}].DiscountPrice" readonly/>
+            <span class="discount-price-display mt-1">0đ</span>
+        </td>
+                                             
+                                                <td>
+                                                    <button type="button" class="btn btn-danger remove-row">Xóa</button>
+                                                </td>
+                                            `;
+            tableBody.appendChild(newRow);
+            rowIndex++;
+
+            // Gọi cập nhật giá cho dòng vừa thêm
+            updatePriceForRow(newRow);
+        });
+
+        document.getElementById('orderDetailsTableBody').addEventListener('click', function (e) {
+            if (e.target.classList.contains('remove-row')) {
+                e.target.closest('tr').remove();
+
+                // Nếu không còn dòng nào, hiển thị "Chưa có sản phẩm"
+                const rows = document.querySelectorAll('#orderDetailsTableBody tr');
+                if (rows.length === 0) {
+                    document.getElementById('orderDetailsTableBody').innerHTML = `
+                                                        <tr id="emptyRow">
+                                                            <td colspan="4" class="text-center">Chưa có sản phẩm</td>
+                                                        </tr>`;
+                }
+            }
+
+            // Cập nhật giá khi nhấn vào các nút cộng/trừ số lượng
+            if (e.target.classList.contains('btn-plus') || e.target.classList.contains('btn-minus')) {
+                const row = e.target.closest('tr');
+                const quantityInput = row.querySelector('.quantity-input');
+                const productSelect = row.querySelector('.product-select');
+                const priceInput = row.querySelector('.price-input');
+
+                // Cập nhật số lượng
+                let quantity = parseInt(quantityInput.value) || 1;
+                if (e.target.classList.contains('btn-plus')) {
+                    quantity++;
+                } else if (e.target.classList.contains('btn-minus') && quantity > 1) {
+                    quantity--;
+                }
+
+                quantityInput.value = quantity;
+
+                // Cập nhật lại giá
+                const selectedOption = productSelect.options[productSelect.selectedIndex];
+                const price = parseFloat(selectedOption.getAttribute('data-price')) || 0;
+                const discount = parseFloat(selectedOption.getAttribute('data-discount')) || 0;
+
+                const totalPrice = price * quantity;
+                priceInput.value = totalPrice.toFixed(2) + "đ";
+            }
+        });
+
+        // Cập nhật giá khi chọn sản phẩm hoặc thay đổi số lượng
+        document.getElementById('orderDetailsTableBody').addEventListener('input', function (e) {
+            if (e.target.classList.contains('quantity-input') || e.target.classList.contains('product-select')) {
+                const row = e.target.closest('tr');
+                updatePriceForRow(row);
+            }
+        });
+
+        function updatePriceForRow(row) {
+            const productSelect = row.querySelector('.product-select');
+            const quantityInput = row.querySelector('.quantity-input');
+            const priceInput = row.querySelector('.price-input');
+            const discountPriceInput = row.querySelector('.discount-price-input');
+            const discountPriceDisplay = row.querySelector('.discount-price-display');
+
+            const selectedOption = productSelect.options[productSelect.selectedIndex];
+            const price = parseFloat(selectedOption.getAttribute('data-price')) || 0;
+            const discount = parseFloat(selectedOption.getAttribute('data-discount')) || 0;
+            const quantity = parseInt(quantityInput.value) || 1;
+
+            // Tính giá gốc (totalPrice) và giá sau chiết khấu (discountPrice)
+            const totalPrice = price * quantity;
+            const discountPrice = (price - (price * discount / 100)) * quantity;
+
+            // Gán giá trị vào các input
+            priceInput.value = totalPrice.toFixed(2) + "đ";
+            discountPriceInput.value = discountPrice.toFixed(2); // Giá trị gửi về server
+            discountPriceDisplay.textContent = discountPrice.toFixed(2) + "đ"; // Hiển thị người dùng thấy
+        }
+
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+
+

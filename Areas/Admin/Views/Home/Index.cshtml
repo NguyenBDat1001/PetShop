@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="app-content-header">
+    <!-- Container -->
+    <div class="container-fluid">
+        <!-- Row -->
+        <div class="row">
+            <div class="col-sm-6">
+                <h2 class="mb-4 fw-bold display-5">Dashboard</h2>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-end">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-area="Admin" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Dashboard
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- App Content -->
+<div class="app-content">
+    <!-- Container -->
+    <div class="container-fluid">
+        <!-- Row -->
+        <div class="row">
+            <div class="col-12">
+                <!-- card -->
+                <div class="card card-success card-outline">
+                    <div class="card-header">
+                        <h3 class="card-title">Title</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-lte-toggle="card-collapse" title="Collapse">
+                                <i data-lte-icon="expand" class="bi bi-plus-lg"></i>
+                                <i data-lte-icon="collapse" class="bi bi-dash-lg"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-lte-toggle="card-remove" title="Remove">
+                                <i class="bi bi-x-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <!-- card-body -->
+                    <div class="card-body">
+                        Start creating your amazing application!
+                    </div>
+                    <!-- card-footer -->
+                    <div class="card-footer">Footer</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

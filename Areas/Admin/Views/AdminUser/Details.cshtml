@@ -1,0 +1,107 @@
+﻿@model PetShop.Models.AdminUser
+
+@{
+    ViewData["Title"] = "Chi tiết Tài khoản";
+}
+
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <h3 class="main-color">PetShop <span class=" text-muted"> - Chi tiết Tài khoản</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row g-3">
+        <div class=" col-xl-8 col-md-10 col-12 mx-auto">
+            <div class="card  card-outline mt-4 p-2">
+                <div class="card-content mt-3">
+                    <div class="text-center">
+                        <img class="card-img-top rounded-2 border" style="width: auto; height: 310px;"
+                             src="~/data/users/@Html.DisplayFor(model => model.Avatar)"
+                             alt="Avatar" />
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class=" mb-3">
+                            <strong>Thông tin chi tiết</strong>
+                        </h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Username):</strong>
+                                        @Html.DisplayFor(model => model.Username)
+                                    </div>
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.DisplayName):</strong>
+                                        @Html.DisplayFor(model => model.DisplayName)
+                                    </div>
+                                    
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Email):</strong>
+                                        @Html.DisplayFor(model => model.Email)
+                                    </div>
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Phone):</strong>
+                                        @Html.DisplayFor(model => model.Phone)
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Password):</strong>
+                                        Không hiển thị
+                                    </div>
+
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Status):</strong>
+                                        @Html.DisplayFor(model => model.ShowStatus)
+                                    </div>
+
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.CreatedBy):</strong>
+                                        @Html.DisplayFor(model => model.CreatedBy)
+                                    </div>
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.CreatedDate):</strong>
+                                        @Html.DisplayFor(model => model.CreatedDateVN)
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.UpdatedBy):</strong>
+                                        @Html.DisplayFor(model => model.UpdatedBy)
+                                    </div>
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.UpdatedDate):</strong>
+                                        @Html.DisplayFor(model => model.UpdatedDateVN)
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center py-3">
+                        <a asp-action="Index" class="btn btn-secondary ">Đóng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

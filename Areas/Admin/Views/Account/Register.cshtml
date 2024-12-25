@@ -1,0 +1,130 @@
+﻿@{
+    Layout = null;
+}
+@model PetShop.Areas.Admin.DTOs.request.RegisterDto;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Đăng kí - PetShop Admin</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="title" content="AdminLTE 4 | Sidebar Mini">
+    <meta name="author" content="ColorlibHQ">
+    <meta name="description" content="AdminLTE is a Free Bootstrap 5 Admin Dashboard, 30 example pages using Vanilla JS.">
+    <meta name="keywords" content="bootstrap 5, bootstrap, bootstrap 5 admin dashboard, bootstrap 5 dashboard, bootstrap 5 charts, bootstrap 5 calendar, bootstrap 5 datepicker, bootstrap 5 tables, bootstrap 5 datatable, vanilla js datatable, colorlibhq, colorlibhq dashboard, colorlibhq admin dashboard"><!--end::Primary Meta Tags-->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@@fontsource/source-sans-3@5.0.12/index.css" />
+    <link rel="stylesheet" href="~/admin/plugins/overlayscrollbars/styles/overlayscrollbars.min.css" />
+    <link rel="stylesheet" href="~/admin/plugins/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="~/admin/plugins/font-awesome/css/all.css" />
+    <link rel="stylesheet" href="~/admin/css/adminlte.css" />
+    <link rel="stylesheet" href="~/admin/css/custom.css" />
+    <link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
+    <link rel="shortcut icon"
+          href="~/img/petshop/petshop_icon_4.png"
+          type="image/x-icon" />
+
+
+
+</head>
+<body>
+
+    <div class="register-page bg-body-secondary">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9 col-sm-12 mx-auto">
+                    <div class="card card-outline">
+                        <div class="card-header">
+                            <a href="#" class="d-flex d-flex align-items-center flex-column link-dark text-center link-offset-2 link-opacity-100 link-opacity-50-hover ">
+                                <img src="~/img/petshop/petshop_logo-remove-background.png" class="img-fluid" alt="" style="height: 100px;">
+                                <h3 class="my-1"> <b class="main-color">PetShop Admin</b> Đăng ký</h3>
+                            </a>
+                        </div>
+                        <div class="card-body register-card-body">
+                            <form asp-action="Register">
+                                @Html.AntiForgeryToken()
+
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="row">
+                                    <div class="col-md-6 col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="Username">Tên tài khoản</label>
+                                            <input type="text" asp-for="Username" class="form-control" />
+                                            <span asp-validation-for="Username" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="email">Địa chỉ Email</label>
+                                            <input type="email" asp-for="Email" class="form-control" />
+                                            <span asp-validation-for="Email" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="Password">Mật khẩu</label>
+                                            <input type="password" asp-for="Password" class="form-control" />
+                                            <span asp-validation-for="Password" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="ConfirmPassword">Xác nhận mật khẩu</label>
+                                            <input type="password" asp-for="ConfirmPassword" class="form-control" />
+                                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="mb-0 mt-3">
+                                    Đã có tài khoản? 
+                                    <a asp-action="Login" asp-controller="Account" class="text-center">Đăng nhập</a>
+                                </p>
+                                <div class="clearfix text-center my-2">
+                                    <input type="submit" value="Đăng ký" class="btn btn-main-color w-25" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/admin/plugins/overlayscrollbars/browser/overlayscrollbars.browser.es6.min.js"></script>
+    <script src="~/admin/js/bootstrap.bundle.min.js"></script>
+    <script src="~/admin/js/adminlte.js"></script>
+    <script src="~/admin/plugins/jquery/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.13/dist/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    <script src="~/admin/js/custom.js"></script>
+    <script>
+
+        //================ Toastr =====================
+        $(document).ready(function () {
+            toastr.options = {
+                "closeButton": true,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": "toast-top-center", // Vị trí hiển thị (top-right, top-left, bottom-right, bottom-left)
+                "preventDuplicates": true,
+                "timeOut": "7000", // Thời gian tồn tại (ms)
+            };
+
+            // Hiển thị thông báo từ TempData
+        @if (TempData["Success"] != null)
+        {
+            <text>toastr.success('@TempData["Success"]'); </text>
+        }
+        @if (TempData["Error"] != null)
+        {
+            <text>toastr.error('@TempData["Error"]'); </text>
+        }
+                            });
+    </script>
+
+</body>
+</html>

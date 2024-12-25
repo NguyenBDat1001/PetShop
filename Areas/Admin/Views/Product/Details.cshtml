@@ -1,0 +1,150 @@
+﻿@model PetShop.Models.Product
+
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <h3 class="main-color">PetShop <span class=" text-muted"> - Chi tiết sản phẩm</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row g-3">
+        <div class=" col-xl-10 col-12 mx-auto">
+            <div class="card  card-outline mt-4 p-2">
+                <div class="card-content mt-3">
+                    <div class="text-center">
+                        <img class="card-img-top rounded-2 border" style="width: auto; height: 310px;"
+                             src="~/data/products/@Html.DisplayFor(model => model.Avatar)"
+                             alt="Product Image" />
+                    </div>
+
+                    <div class="card-body">
+                        <h3 class=" mb-3">
+                            <strong>Thông tin chi tiết của sản phẩm</strong>
+                        </h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <strong class="col-lg-2 mb-1">
+                                        @Html.DisplayNameFor(model => model.Intro):
+                                    </strong>
+                                    <div class="col-lg-10">
+                                        @Html.DisplayFor(model => model.Intro)
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <strong class="col-lg-2 mb-1 ">
+                                        @Html.DisplayNameFor(model => model.Name):
+                                    </strong>
+                                    <div class="col-lg-10">
+                                        @Html.DisplayFor(model => model.Name)
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-3 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Price):</strong>
+                                        @Html.DisplayFor(model => model.Price)đ
+                                    </div>
+                                    <div class="col-lg-3 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Discount):</strong>
+                                        @Html.DisplayFor(model => model.Discount)
+                                    </div>
+                                    <div class="col-lg-3 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Unit):</strong>
+                                        @Html.DisplayFor(model => model.Unit)
+                                    </div>
+                                    <div class="col-lg-3 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Type):</strong>
+                                        @Html.DisplayFor(model => model.Type!.Name)
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-3 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Category):</strong>
+                                        @Html.DisplayFor(model => model.Category!.Name)
+                                    </div>
+                                    <div class="col-lg-3 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Brand):</strong>
+                                        @Html.DisplayFor(model => model.Brand)
+                                    </div>
+                                    <div class="col-lg-3 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Rate):</strong>
+                                        @Html.DisplayFor(model => model.Rate)
+                                    </div>
+                                    <div class="col-lg-3 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.Quantity):</strong>
+                                        @Html.DisplayFor(model => model.Quantity)
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.CreatedBy):</strong>
+                                        @Html.DisplayFor(model => model.CreatedBy)
+                                    </div>
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.CreatedDate):</strong>
+                                        @Html.DisplayFor(model => model.CreatedDateVN)
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.UpdatedBy):</strong>
+                                        @Html.DisplayFor(model => model.UpdatedBy)
+                                    </div>
+                                    <div class="col-lg-6 mb-1">
+                                        <strong class="me-1">@Html.DisplayNameFor(model => model.UpdatedDate):</strong>
+                                        @Html.DisplayFor(model => model.UpdatedDateVN)
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-group-item">
+                                <div class="card mt-1">
+                                    <div class="card-header">
+                                        <strong>@Html.DisplayNameFor(model => model.Description):</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>  @Html.Raw(Model.Description)</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="card mt-1">
+                                    <div class="card-header">
+                                        <strong>@Html.DisplayNameFor(model => model.Details):</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>  @Html.Raw(Model.Details)</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center py-3">
+                        <a asp-action="Edit" asp-route-id="@Model?.Pro_ID" class="btn btn-success me-5">Chỉnh sửa</a>
+                        <a asp-action="Index" class="btn btn-secondary ">Hủy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,191 @@
+﻿
+.main-color {
+    color: #dead6f;
+}
+.login-box,.register-box {
+    width: 420px;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header {
+    background-color: #dead6f;
+}
+
+.th-act {
+    /* Đặt độ rộng cho cột th-act */
+    width: 202px; /* Điều chỉnh độ rộng theo nhu cầu */
+}
+.th-index {
+    /* Đặt độ rộng cho cột th-id */
+    width: 50px; /* Điều chỉnh độ rộng theo nhu cầu */
+}
+
+.callout-main-color {
+    --lte-callout-color: #36210a;
+    --lte-callout-bg: #e7dfd1;
+    --lte-callout-border: #cfbca3;
+    --bs-callout-link-color: #36260a;
+}
+
+.callout {
+    --bs-link-color-rgb: var(--lte-callout-link);
+    --bs-code-color: var(--lte-callout-code-color);
+    padding: 1.25rem;
+    color: var(--lte-callout-color, inherit);
+    background-color: var(--lte-callout-bg, var(--bs-gray-100));
+    border-left: 0.25rem solid var(--lte-callout-border, var(--bs-gray-300));
+    border-radius: 5px 5px 20px 20px;
+}
+
+.card {
+    /*  border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    margin: 20px auto;
+    background: #f6f6f6;*/
+
+
+    box-shadow: -8px 12px 18px 0 rgba(25, 42, 70, 0.13);
+    margin-bottom: 2.2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #f6f6f6;
+    background-clip: border-box;
+    border: 0 solid #dfe3e7;
+    border-radius: 0.267rem;
+}
+
+}
+    .card-title {
+        float: left;
+        margin: 5px;
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+.card.card-outline {
+    border-top: 5px solid #dead6f;
+}
+
+.btn-main-color {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #dead6f;
+    --bs-btn-border-color: #dead6f;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #cb9044;
+    --bs-btn-hover-border-color: #995e13;
+    --bs-btn-focus-shadow-rgb: 60, 153, 110;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #995e13;
+    --bs-btn-active-border-color: #76490f;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #dead6f;
+    --bs-btn-disabled-border-color: #dead6f;
+}
+
+
+.app-sidebar {
+    background-color: white !important;
+}
+
+.sidebar-brand {
+    height: 5rem;
+}
+
+    .sidebar-brand .brand-link .brand-image {
+        max-height: 68px;
+        margin-left: 8px;
+    }
+
+a {
+    color: #dead6f;
+}
+
+    a:hover {
+        color: #cb9044;
+    }
+
+.sidebar-wrapper .sidebar-menu > .nav-item.menu-open .nav-link.active:not(:hover) {
+    --lte-sidebar-menu-active-bg: #cb9044;
+}
+.app-sidebar {
+  --lte-sidebar-hover-bg: #dead6f ;
+  --lte-sidebar-color: #343a40;
+  --lte-sidebar-hover-color: #fff;
+  --lte-sidebar-active-color: #fff;
+  --lte-sidebar-menu-active-bg: #dead6f ;
+  --lte-sidebar-menu-active-color: #fff;
+  --lte-sidebar-submenu-bg: transparent;
+  --lte-sidebar-submenu-color: #777;
+  --lte-sidebar-submenu-hover-color: #fff;
+  --lte-sidebar-submenu-hover-bg: #dead6f ;
+  --lte-sidebar-submenu-active-color: #fff;
+  --lte-sidebar-submenu-active-bg: #dead6f ;
+  --lte-sidebar-header-color: #31373d;
+}
+
+.dt-paging .page-link.active, .dt-paging .active > .page-link {
+  color: #fff;
+  background-color: #dead6f ;
+  border-color: #dead6f ;
+}
+.dt-paging .page-link {
+  color: #dead6f ;
+}
+
+/* custom for bootstrap 5 */
+.form-check.check-secondary .form-check-input {
+  border: 1px solid #6c757d;
+}
+.form-check.check-secondary .form-check-input:checked {
+  background-color: #6c757d !important;
+}
+
+.form-check.check-success .form-check-input {
+  border: 1px solid #dead6f ;
+}
+.form-check.check-success .form-check-input:checked {
+  background-color: #dead6f  !important;
+}
+
+.form-check.check-danger .form-check-input {
+  border: 1px solid #dc3545;
+}
+.form-check.check-danger .form-check-input:checked {
+  background-color: #dc3545 !important;
+}
+
+.form-check.check-warning .form-check-input {
+  border: 1px solid #ffc107;
+}
+.form-check.check-warning .form-check-input:checked {
+  background-color: #ffc107 !important;
+}
+
+.form-check.check-info .form-check-input {
+  border: 1px solid #0dcaf0;
+}
+.form-check.check-info .form-check-input:checked {
+  background-color: #0dcaf0 !important;
+}
+
+.form-check.check-dark .form-check-input {
+  border: 1px solid #212529;
+}
+.form-check.check-dark .form-check-input:checked {
+  background-color: #212529 !important;
+}
+
+.btn.btn-info, .btn.btn-warning {
+  color: white;
+}
+.btn.btn-info:active, .btn.btn-warning:active {
+  color: white;
+}
+.img-prod {
+    width: auto;
+    height: 110px;
+}

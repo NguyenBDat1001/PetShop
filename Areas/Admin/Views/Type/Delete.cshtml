@@ -1,0 +1,81 @@
+﻿@model PetShop.Models.Type
+
+@{
+    ViewData["Title"] = "Xóa loại sản phẩm";
+}
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <h3 class="main-color">PetShop <span class=" text-muted"> - Xóa loại sản phẩm</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row g-3">
+        <div class="row">
+            <div class="col-xl-5 col-md-8 col-12 mx-auto">
+                <div class="card card-outline mt-4 p-2">
+                    <div class="card-header">
+                        <div class="card-title">Bạn có chắc chắn muốn xóa loại sản phẩm này không?</div>
+                    </div>
+                    <div class="card-body my-2">
+
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <strong class="me-2">
+                                    @Html.DisplayNameFor(model => model.Name):
+                                </strong>
+                                @Html.DisplayFor(model => model.Name)
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong class="me-2">
+                                    @Html.DisplayNameFor(model => model.DisplayOrder):
+                                </strong>
+                                @Html.DisplayFor(model => model.DisplayOrder)
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong class="me-2">
+                                    @Html.DisplayNameFor(model => model.CreatedDate):
+                                </strong>
+                                @Html.DisplayFor(model => model.CreatedDateVN)
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong class="me-2">
+                                    @Html.DisplayNameFor(model => model.CreatedBy):
+                                </strong>
+                                @Html.DisplayFor(model => model.CreatedBy)
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong class="me-2">
+                                    @Html.DisplayNameFor(model => model.UpdatedDate):
+                                </strong>
+                                @Html.DisplayFor(model => model.UpdatedDateVN)
+                            </li>
+
+                            <li class="list-group-item">
+                                <strong class="me-2">
+                                    @Html.DisplayNameFor(model => model.UpdatedBy):
+                                </strong>
+                                @Html.DisplayFor(model => model.UpdatedBy)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer text-center py-3">
+                        <form asp-action="Delete">
+                            <input type="hidden" asp-for="Typ_ID" />
+                            <input type="submit" value="Xóa" class="btn btn-danger me-5" /> 
+                            <a asp-action="Index" class="btn btn-secondary ">Hủy</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

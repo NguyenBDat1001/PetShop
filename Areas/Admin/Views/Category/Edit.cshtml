@@ -1,0 +1,66 @@
+﻿@model PetShop.Models.Category
+
+@{
+    ViewData["Title"] = "Cập nhật danh mục";
+}
+<div class="app-content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm">
+                <h3 class="main-color">PetShop <span class=" text-muted"> - Cập nhật danh mục</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row g-3">
+        <div class="col-12">
+            <div class="callout callout-main-color">
+                Cập nhật thông tin danh mục bằng cách chỉnh sửa thông tin tương ứng tại đây.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-md-8 col-12 mx-auto">
+                <div class="card  card-outline mt-4 p-2">
+                    <div class="card-header">
+                        <div class="card-title">Biểu mẫu chỉnh sửa thông tin danh mục</div>
+                    </div>
+                    <form asp-action="Edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="Cat_ID" />
+
+                        <div class="card-body mt-2">
+                            <div class="row mb-4">
+                                <label asp-for="Name" class="col-md-3 col-form-label"></label>
+                                <div class="col-md-9">
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <label asp-for="DisplayOrder" class="col-md-3 col-form-label"></label>
+                                <div class="col-md-4">
+                                    <input asp-for="DisplayOrder" class="form-control" />
+                                    <span asp-validation-for="DisplayOrder" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center py-3">
+                            <input type="submit" value="Lưu" class="btn btn-success me-5" />
+                            <a asp-action="Index" class="btn btn-secondary ">Hủy</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
